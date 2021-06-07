@@ -5,16 +5,20 @@ Quality control pipeline for MS-based proteomics. Automatically analyzes Hela sa
 1. Clone this repo to your local machine. 
 2. Setup a Python installation that includes numpy and pandas (e.g. via Anaconda) and add it to your PATH variable. 
 3. Download MaxQuant version of your choice and place the "MaxQuant" folder inside the "MQ_automated". We use version 1.6.10.43, as we have been using this version for manual analysis before and wanted to keep the continuity. Older MQ versions can be found here: https://drive.google.com/drive/folders/1Ja9iaCQ6mM66VQEeaS36hqq77bnsmxQF
-5. Edit the fastFilePath variable in "mqpar.xml" to point to your fasta file 
+5. Edit the fastFilePath variable in "mqpar.xml" to point to your fasta file. Edit the basepath variable in the "copy_and_run_mq.ps1" to point to the top folder of the repo on your machine. In the same file, set the $watcher.Path to the path on your network drive, where the Hela raw files are backed up.
+6. Right-click on "copy_and_run_mq.ps1" and start the watcher by clicking "Run with Powershell".
+
 
 ## Comments
 * We recommend to place all files on a fast SSD, as this will improve overall performance. As the script is based on a powershell FileWatcher, the PC should be permanently stay on.
 * Activity of the watcher will be written to logfile and console. 
-* Several parameters are determined from the name of the rawfile: 
+* File size and creation date are saved to a temporary file and ultimately placed in the result folder alongside the MQ output files as "additionalInfo.txt".
+* Several parameters are deduced from the name of the rawfile: 
 ** FAIMS - "_1CV_" or "_noFAIMS_" to determine the presence of a FAIMS frontend on an Exploris 480. (default: noFAIMS)
 ** amount - "_###ng_"to get the amount of peptides injected (default: 500ng)
 ** producer - "CPMS", "Pierce" or "MPI" to identify the source of the HeLa sample. (default: CPMS)
-** 
+** analysis time - "1h" or "2h" (default: 2h)
+* If multiple raw files are renamed in short succession, the script will analyze on one after the other. Beware that this may lead to a buildup, if the analysis time should be longer than the time for acquiring the next Hela sample. On our setup, it usually takes around 70 min from completion of acquisition on the MS to the final result in the table. A 2h Hela run intself takes around 140 min including loading time.  
 
 ## Known issues
 * depending on network architecture, the FileWatcher might not be able to monitor subdirectories, even with IncludeSubdirectories set to True. A simple workaround would be to have only a single backup folder or to employ a watcher instance for each subfolder. 
