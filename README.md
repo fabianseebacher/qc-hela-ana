@@ -4,9 +4,9 @@ Quality control pipeline for MS-based proteomics. Automatically analyzes Hela sa
 ## Setup instructions
 1. Clone this repo to your local machine. 
 2. Setup a Python installation that includes numpy and pandas (e.g. via Anaconda) and add it to your PATH variable. 
-3. Download MaxQuant version of your choice. We use 1.6.10.43, since we have been using this version for manual analysis before and wanted to keep the continuity. Older MQ versions can be found here: https://drive.google.com/drive/folders/1Ja9iaCQ6mM66VQEeaS36hqq77bnsmxQF
-4. Place th
-5. 
+3. Download MaxQuant version of your choice and place the "MaxQuant" folder inside the "MQ_automated". We use 1.6.10.43, since we have been using this version for manual analysis before and wanted to keep the continuity. Older MQ versions can be found here: https://drive.google.com/drive/folders/1Ja9iaCQ6mM66VQEeaS36hqq77bnsmxQF
+5. Place th
+6. 
 
 ## Known issues
 * depending on network architecture, the FileWatcher might not be able to monitor subdirectories, even with IncludeSubdirectories set to True. Simple workaround would be to have only a single backup folder or multiple watcher instances for each subfolder. 
