@@ -13,16 +13,31 @@ Quality control pipeline for MS-based proteomics. Automatically analyzes Hela sa
 * We recommend to place all files on a fast SSD, as this will improve overall performance. As the script is based on a powershell FileWatcher, the PC should be permanently stay on.
 * Activity of the watcher will be written to logfile and console. 
 * File size and creation date are saved to a temporary file and ultimately placed in the result folder alongside the MQ output files as "additionalInfo.txt".
-* Several parameters are deduced from the name of the rawfile: 
+* If multiple raw files are renamed in short succession, the script will analyze on one after the other. Beware that this may lead to a buildup, if the analysis time should be longer than the time for acquiring the next Hela sample. On our setup, it usually takes around 70 min from completion of acquisition on the MS to the final result in the table. A 2h Hela run intself takes around 140 min including loading time.
 
-| Property | Values |
-| ------------- | ------------- |
-| FAIMS  | "_1CV_" or "_noFAIMS_" to determine the presence of a FAIMS frontend on an Exploris 480. (default: noFAIMS)  |
-| amount  | "_###ng_"to get the amount of peptides injected (default: 500ng)  |
-| producer  | "_CPMS_", "_Pierce_" or "_MPI_" to identify the source of the HeLa sample. (default: CPMS)  |
-| gradient length  | "_1h_" or "_2h_" (default: 2h)  |
+## Parameters written to table
 
-* If multiple raw files are renamed in short succession, the script will analyze on one after the other. Beware that this may lead to a buildup, if the analysis time should be longer than the time for acquiring the next Hela sample. On our setup, it usually takes around 70 min from completion of acquisition on the MS to the final result in the table. A 2h Hela run intself takes around 140 min including loading time.  
+| Property | determined from | Values |
+| ------------- | ------------- | ------------- |
+| Filename | _summary.txt_ |  |
+| analysis date | _summary.txt_ |  |
+| File size [MB] | Raw file -> _additionalInfo.txt_ |  |
+| creation date | Raw file -> _additionalInfo.txt_ |  |
+| FAIMS | Rawfile name | "_1CV_" or "_noFAIMS_" to determine the presence of a FAIMS frontend on an Exploris 480. (default: noFAIMS)  |
+| amount | Rawfile name | "_###ng_"to get the amount of peptides injected (default: 500ng)  |
+| producer | Rawfile name | "_CPMS_", "_Pierce_" or "_MPI_" to identify the source of the HeLa sample. (default: CPMS)  |
+| gradient length | Rawfile name | "_1h_" or "_2h_" (default: 2h)  |
+| MS |  | Number of MS scans |
+| MS/MS |  | Number of MS/MS scans |
+| MS2/MS1 ratio |  | Ratio of MS/MS to MS scans |
+| Peptide Seq Identified |  | Number of Peptides |
+| ProteinGroups |  | Number of ProteinGroups |
+| Uncalibrated mass error [ppm] |  |  |
+| Retention length [s] |  | Peak width |
+| MS TIC |  | Total ion current MS1 |
+| MS Base peak intensity |  | Base peak intensity MS1 |
+| MS/MS TIC |  | Total ion current MS2 |
+| MS/MS Base peak intensity |  | Base peak intensity MS2 |  
 
 ## Known issues
 * depending on network architecture, the FileWatcher might not be able to monitor subdirectories, even with IncludeSubdirectories set to True. A simple workaround would be to have only a single backup folder or to employ a watcher instance for each subfolder. 
