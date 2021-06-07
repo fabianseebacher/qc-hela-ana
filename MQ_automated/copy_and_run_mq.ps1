@@ -53,15 +53,15 @@
             Write-Host $logline2
 
 		    ### Copy mqpar.xml to subfolder and edit file path to local raw
-            Copy-Item -Path $basepath'MQ_1.6.10.43_automated\mqparHelaNeptun.xml' -Destination $newpath
-		    [xml]$myXML = $(Get-Content $newpath'\mqparHelaNeptun.xml')
+            Copy-Item -Path $basepath'MQ_automated\mqparHela.xml' -Destination $newpath
+		    [xml]$myXML = $(Get-Content $newpath'\mqparHela.xml')
      
             $filename = Split-Path $path -leaf
             $mystring = [string]$newpath+[string]$filename
 		    $myXML.MaxQuantParams.filePaths.string=$mystring
             $savepath = [string]$newpath+'\mqpar.xml'
 		    $myXML.Save($savepath)
-            Remove-Item -Path $newpath'\mqparHelaNeptun.xml'
+            Remove-Item -Path $newpath'\mqparHela.xml'
 
 		    ### This starts the actual maxquant analyis
             Start-Sleep -s 30
@@ -70,7 +70,7 @@
 		    Add-content $basepath'log.txt' -value $text3
             Write-Host $text3
 
-		    $app = [string]$basepath+'MQ_1.6.10.43_automated\MaxQuant\bin\MaxQuantCmd.exe'
+		    $app = [string]$basepath+'MQ_automated\MaxQuant\bin\MaxQuantCmd.exe'
 		    $arg1 = $savepath
 		    & $app $arg1 
 
@@ -100,11 +100,11 @@
                 Move-Item -Path $tokenpath -Destination $destpath'additionalInfo.txt'
                 ### Run python script to write results into table
                 Write-Host "Running python script..."
-                python $basepath'MQ_1.6.10.43_automated\hela_analyzer_v2.py'
+                python $basepath'MQ_automated\hela_analyzer_v2.py'
                 ### Wait 5 min and then copy the results table to network folder.
                 Write-Host "Finished python script. Now waiting 2 minutes to copy to network drive."
                 Start-Sleep -s 120
-                Copy-Item -Path $basepath'\res\hela_auto2.xlsx' -Destination "N:\IDO_Proteomics_CellBiol\Temporary Backup_MS PC_Drive D\"
+                Copy-Item -Path $basepath'\res\hela_auto.xlsx' -Destination "N:\IDO_Proteomics_CellBiol\Temporary Backup_MS PC_Drive D\"
                 
                 $copytext = "$(Get-Date), Copied output table to network drive." 
                 Add-content $basepath'log.txt' -value $copytext
