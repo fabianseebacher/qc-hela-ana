@@ -6,3 +6,9 @@
 2. Setup an Anaconda environment from the "requirements.txt" file provided here.
 3. Download MaxQuant version of your choice. We use 1.6.10.43, since we have been using this version for manual analysis before and wanted to keep continuity. Old versions can be found here: https://drive.google.com/drive/folders/1Ja9iaCQ6mM66VQEeaS36hqq77bnsmxQF
 4. 
+
+## Known issues
+* depending on network architecture, the FileWatcher might not be able to monitor subdirectories, even with IncludeSubdirectories set to True. 
+
+## Future features
+* automatically determine the 
