@@ -9,9 +9,15 @@ Quality control pipeline for MS-based proteomics. Automatically analyzes Hela sa
 
 ## Comments
 * We recommend to place all files on a fast SSD, as this will improve overall performance. As the script is based on a powershell FileWatcher, the PC should be permanently stay on.
+* Activity of the watcher will be written to logfile and console. 
+* Several parameters are determined from the name of the rawfile: 
+** FAIMS - "_1CV_" or "_noFAIMS_" to determine the presence of a FAIMS frontend on an Exploris 480. (default: noFAIMS)
+** amount - "_###ng_"to get the amount of peptides injected (default: 500ng)
+** producer - "CPMS", "Pierce" or "MPI" to identify the source of the HeLa sample. (default: CPMS)
+** 
 
 ## Known issues
-* depending on network architecture, the FileWatcher might not be able to monitor subdirectories, even with IncludeSubdirectories set to True. A simple workaround would be to have only a single backup folder or multiple watcher instances for each subfolder. 
+* depending on network architecture, the FileWatcher might not be able to monitor subdirectories, even with IncludeSubdirectories set to True. A simple workaround would be to have only a single backup folder or to employ a watcher instance for each subfolder. 
 
 ## Future features
 * automatically set the paths (e.g. of the backup drive) from a config file
