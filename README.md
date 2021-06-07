@@ -14,10 +14,14 @@ Quality control pipeline for MS-based proteomics. Automatically analyzes Hela sa
 * Activity of the watcher will be written to logfile and console. 
 * File size and creation date are saved to a temporary file and ultimately placed in the result folder alongside the MQ output files as "additionalInfo.txt".
 * Several parameters are deduced from the name of the rawfile: 
-** FAIMS - "_1CV_" or "_noFAIMS_" to determine the presence of a FAIMS frontend on an Exploris 480. (default: noFAIMS)
-** amount - "_###ng_"to get the amount of peptides injected (default: 500ng)
-** producer - "CPMS", "Pierce" or "MPI" to identify the source of the HeLa sample. (default: CPMS)
-** analysis time - "1h" or "2h" (default: 2h)
+
+| Property | Values |
+| ------------- | ------------- |
+| FAIMS  | "_1CV_" or "_noFAIMS_" to determine the presence of a FAIMS frontend on an Exploris 480. (default: noFAIMS)  |
+| amount  | "_###ng_"to get the amount of peptides injected (default: 500ng)  |
+| producer  | "_CPMS_", "_Pierce_" or "_MPI_" to identify the source of the HeLa sample. (default: CPMS)  |
+| gradient length  | "_1h_" or "_2h_" (default: 2h)  |
+
 * If multiple raw files are renamed in short succession, the script will analyze on one after the other. Beware that this may lead to a buildup, if the analysis time should be longer than the time for acquiring the next Hela sample. On our setup, it usually takes around 70 min from completion of acquisition on the MS to the final result in the table. A 2h Hela run intself takes around 140 min including loading time.  
 
 ## Known issues
