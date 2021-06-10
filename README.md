@@ -11,9 +11,9 @@ Quality control pipeline for MS-based proteomics. Automatically analyzes Hela sa
 
 ## Comments
 * We recommend to place all files on a fast SSD, as this will improve overall performance. As the script is based on a powershell FileWatcher, the PC should be permanently stay on.
-* Activity of the watcher will be written to logfile and console. 
-* File size and creation date are saved to a temporary file and ultimately placed in the result folder alongside the MQ output files as "additionalInfo.txt".
-* If multiple raw files are renamed in short succession, the script will analyze on one after the other. Beware that this may lead to a buildup, if the analysis time should be longer than the time for acquiring the next Hela sample. On our setup, it usually takes around 70 min from completion of acquisition on the MS to the final result in the table. A 2h Hela run intself takes around 140 min including loading time.
+* Activity of the watcher will be written to a logfile and console. 
+* File size and creation date are saved to a temporary file with the same name as the raw file and ultimately placed in the result folder alongside the MQ output files as "additionalInfo.txt".
+* If multiple raw files are backed up in short succession, the script will analyze on one after the other. Beware that this may lead to a buildup, if the analysis time should be longer than the time between Hela samples. On our setup, it usually takes around 70 min from completion of acquisition on the MS to the final result in the table. A 2h Hela run  takes around 140 min including loading time.
 
 ## Extracted parameters
 
