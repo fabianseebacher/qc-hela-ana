@@ -43,4 +43,5 @@ Quality control pipeline for MS-based proteomics. Automatically analyzes Hela sa
 * depending on network architecture, the FileWatcher might not be able to monitor subdirectories, even with IncludeSubdirectories set to True. A simple workaround would be to have only a single backup folder or to employ a watcher instance for each subfolder. 
 
 ## Future features
-* automatically set the paths (e.g. of the backup drive) from a config file
+* automatically set the paths (e.g. of the backup drive) from config file
+* extract identifier for MS device and write into output table
