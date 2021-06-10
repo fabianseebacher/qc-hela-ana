@@ -24,7 +24,7 @@ Quality control pipeline for MS-based proteomics. Automatically analyzes Hela sa
 | File size [MB] | Raw file -> _additionalInfo.txt_ |  |
 | creation date | Raw file -> _additionalInfo.txt_ |  |
 | FAIMS | Rawfile name | "_1CV_" or "_noFAIMS_" to determine the presence of a FAIMS frontend on an Exploris 480. (default: noFAIMS)  |
-| amount | Rawfile name | "_###ng_"to get the amount of peptides injected (default: 500ng)  |
+| amount | Rawfile name | "_###ng_" to get the amount of peptides injected (default: 500ng)  |
 | producer | Rawfile name | "_CPMS_", "_Pierce_" or "_MPI_" to identify the source of the HeLa sample. (default: CPMS)  |
 | gradient length | Rawfile name | "_1h_" or "_2h_" (default: 2h)  |
 | MS |  | Number of MS scans |
