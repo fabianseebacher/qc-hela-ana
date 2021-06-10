@@ -15,7 +15,7 @@ Quality control pipeline for MS-based proteomics. Automatically analyzes Hela sa
 * File size and creation date are saved to a temporary file and ultimately placed in the result folder alongside the MQ output files as "additionalInfo.txt".
 * If multiple raw files are renamed in short succession, the script will analyze on one after the other. Beware that this may lead to a buildup, if the analysis time should be longer than the time for acquiring the next Hela sample. On our setup, it usually takes around 70 min from completion of acquisition on the MS to the final result in the table. A 2h Hela run intself takes around 140 min including loading time.
 
-## Parameters written to table
+## Extracted parameters
 
 | Property | determined from | Values |
 | ------------- | ------------- | ------------- |
