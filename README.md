@@ -27,17 +27,17 @@ Quality control pipeline for MS-based proteomics. Automatically analyzes Hela sa
 | amount | Rawfile name | "_###ng_" to get the amount of peptides injected (default: 500ng)  |
 | producer | Rawfile name | "_CPMS_", "_Pierce_" or "_MPI_" to identify the source of the HeLa sample. (default: CPMS)  |
 | gradient length | Rawfile name | "_1h_" or "_2h_" (default: 2h)  |
-| MS |  | Number of MS scans |
-| MS/MS |  | Number of MS/MS scans |
-| MS2/MS1 ratio |  | Ratio of MS/MS to MS scans |
-| Peptide Seq Identified |  | Number of Peptides |
-| ProteinGroups |  | Number of ProteinGroups |
+| MS |  _summary.txt_ | Number of MS scans |
+| MS/MS |  _summary.txt_ | Number of MS/MS scans |
+| MS2/MS1 ratio | calculated from values in _summary.txt_ | Ratio of MS/MS to MS scans |
+| Peptide Seq Identified |  _summary.txt_ | Number of Peptides |
+| ProteinGroups |  _proteinGroups.txt_ | Number of ProteinGroups |
 | Uncalibrated mass error [ppm] | _evidence.txt_ |  |
-| Retention length [s] |  | Peak width |
-| MS TIC |  | Total ion current MS1 |
-| MS Base peak intensity |  | Base peak intensity MS1 |
-| MS/MS TIC |  | Total ion current MS2 |
-| MS/MS Base peak intensity |  | Base peak intensity MS2 |  
+| Retention length [s] | Calculated from  _evidence.txt_ | Peak width |
+| MS TIC | _msScans.txt_ | Total ion current MS1 |
+| MS Base peak intensity | _msScans.txt_ | Base peak intensity MS1 |
+| MS/MS TIC | _msmsScans.txt_ | Total ion current MS2 |
+| MS/MS Base peak intensity | _msmsScans.txt_ | Base peak intensity MS2 |  
 
 ## Known issues
 * depending on network architecture, the FileWatcher might not be able to monitor subdirectories, even with IncludeSubdirectories set to True. A simple workaround would be to have only a single backup folder or to employ a watcher instance for each subfolder. 
