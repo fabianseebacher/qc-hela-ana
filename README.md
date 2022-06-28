@@ -33,7 +33,7 @@ Quality control pipeline for MS-based proteomics. Automatically analyzes Hela sa
 | Peptide Seq Identified |  _summary.txt_ | Number of Peptides |
 | ProteinGroups |  _proteinGroups.txt_ | Number of ProteinGroups |
 | Uncalibrated mass error [ppm] | _evidence.txt_ |  |
-| Retention length [s] | Calculated from  _evidence.txt_ | Peak width |
+| Retention length [s] | _evidence.txt_ | Peak width |
 | MS TIC | _msScans.txt_ | Total ion current MS1 |
 | MS Base peak intensity | _msScans.txt_ | Base peak intensity MS1 |
 | MS/MS TIC | _msmsScans.txt_ | Total ion current MS2 |
