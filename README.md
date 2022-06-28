@@ -1,8 +1,8 @@
 # qc-hela-ana
-Quality control pipeline for MS-based proteomics. Automatically analyzes Hela samples with MaxQuant and extracts relevant parameters. A powershell script is listening for copying of new raw files that conatain a certain substring (e.g. *QC_HELA*) to a network folder. For real-time backup of raw files, we use SyncBackPro to copy them to the network location as soon as the MS run is finished. In order to analyze the raw files only after successful backup, we actually use the final renaming of the temporary file as a trigger rather than the copying event itself. 
+Quality control pipeline for MS-based proteomics. Automatically analyzes Hela samples with MaxQuant and extracts relevant parameters. A powershell script is listening for copying of new raw files that conatain a certain substring (e.g. *QC_HELA*) to a network folder. For real-time backup of raw files, we use SyncBackPro to copy them to a network location as soon as the MS run is finished. In order to analyze the raw files only after successful backup, the script uses the final renaming event of the temporary file as a trigger rather than the copying event itself. 
 
 ## Setup instructions
-1. Clone this repo to your local machine. 
+1. Clone this repo to your local analysis machine. 
 2. Setup a Python installation that includes numpy and pandas (e.g. via Anaconda) and add it to your PATH variable. 
 3. Download MaxQuant version of your choice and place the "MaxQuant" folder inside the "MQ_automated". We use version 1.6.10.43, as we have been using this version for manual analysis before and wanted to keep the continuity. Older MQ versions can be found here: https://drive.google.com/drive/folders/1Ja9iaCQ6mM66VQEeaS36hqq77bnsmxQF
 5. Edit the fastFilePath variable in "mqpar.xml" to point to your fasta file. Edit the basepath variable in the "copy_and_run_mq.ps1" to point to the top folder of the repo on your machine. In the same file, set the $watcher.Path to the path on your network drive, where the Hela raw files are backed up.
@@ -10,7 +10,7 @@ Quality control pipeline for MS-based proteomics. Automatically analyzes Hela sa
 
 
 ## Comments
-* We recommend to place all files on a fast SSD, as this will improve overall performance. As the script is based on a powershell FileWatcher, the PC should be permanently stay on.
+* We recommend to place all files on a fast SSD, as this will improve overall performance. As the script is based on a powershell FileWatcher, the PC or VM should be permanently stay on.
 * Activity of the watcher will be written to a logfile and console. 
 * File size and creation date are saved to a temporary file with the same name as the raw file and ultimately placed in the result folder alongside the MQ output files as "additionalInfo.txt".
 * If multiple raw files are backed up in short succession, the script will analyze on one after the other. Beware that this may lead to a buildup, if the analysis time should be longer than the time between Hela samples. On our setup, it usually takes around 70 min from completion of acquisition on the MS to the final result in the table. A 2h Hela run  takes around 140 min including loading time.
@@ -44,4 +44,4 @@ Quality control pipeline for MS-based proteomics. Automatically analyzes Hela sa
 
 ## Future features
 * automatically set the paths (e.g. of the backup drive) from config file
-* extract identifier for MS device and write into output table
+* extract identifier for MS device and write into output table (if you have multiple MS to monitor)
